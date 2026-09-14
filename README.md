@@ -51,7 +51,7 @@ Group Policy Preferences (GPP) automatically deploy drives based on OU membershi
     tanulo.elek (Student OU): Automatically maps drive S: (\\DC01\DiakAdatok). Access to Teacher share denied.
 
     tanar.bela (Teacher OU): Automatically maps drive T: (\\DC01\TanarAdatok). Excluded from Student drive mapping.
-### 4. Shared Resources & Role-Based Access Control (RBAC) Updates
+4. Shared Resources & Role-Based Access Control (RBAC) Updates
 To mirror a real-world educational infrastructure, a centralized, read-only shared resource was implemented alongside the user home folders:
 
 * **Folder Path:** `\\dc01\Kozos` mapped automatically to the **`K:`** drive via Group Policy Preferences (GPP).
