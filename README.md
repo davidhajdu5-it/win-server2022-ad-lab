@@ -21,7 +21,7 @@ This repository documents the design, implementation, and verification of a segm
 
 The Active Directory structure enforces strict separation between organizational roles using nested OUs, Security Groups, and NTFS/Share permissions.
 
-```text
+
 labor.local
 └── Teacher (OU)
     ├── GG_Teachers (Security Group)
@@ -52,5 +52,18 @@ Group Policy Preferences (GPP) automatically deploy drives based on OU membershi
 
     tanar.bela (Teacher OU): Automatically maps drive T: (\\DC01\TanarAdatok). Excluded from Student drive mapping.
 
+4. Shared Resources & Role-Based Access Control (RBAC) Updates
+To mirror a real-world educational infrastructure, a centralized, read-only shared resource was implemented alongside the user home folders:
 
+Folder Path: "\\dc01\Kozos" mapped automatically to the "K:" drive via Group Policy Preferences (GPP).
+    Security & Permission Architecture:
+    Share Permissions:
+Configured to Full Control for "Everyone", relying strictly on granular NTFS permissions for actual security enforcement.
+
+NTFS Permissions:
+    Teachers: Full Control (Read, Write, Modify, Delete) to manage course materials and populate the repository.
+    Students: Read & Execute / Read-Only access, restricting unauthorized modifications or deletions.
+Deployment & Verification:
+Deployed seamlessly across domain clients using Group Policy Preferences (GPP) Drive Maps.
+Validated successfully: Student accounts can view and access shared content, but receive standard Windows "Access Denied" prompts when attempting write or delete operations, confirming correct privilege isolation.
 
